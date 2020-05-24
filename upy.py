@@ -3,7 +3,7 @@ from discord.ext import commands
 from datetime import datetime
 import asyncio
 
-TOKEN = 'NzEzODQ1OTc3NTg0MjM4NjMz.XsmDGQ.WuVtvv9uT0uPFaZHJGVhPGyKI3E'
+TOKEN = 'NzEzODQ1OTc3NTg0MjM4NjMz.XspWpA.CaoQUKKTyayXY41fPvX5AX7wKm' + '4'
 
 bot = commands.Bot(command_prefix='!') #инициализируем бота с префиксом '!'
 
