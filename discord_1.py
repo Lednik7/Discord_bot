@@ -28,7 +28,7 @@ async def ping(ctx, message):
     
     offset = datetime.timezone(datetime.timedelta(hours=3))
     
-    date = datetime.datetime(str[2], str[1], str[0], hour, minute) - datetime.datetime.now(offset)
+    date = datetime.datetime(str[2], str[1], str[0], hour, minute) - (datetime.datetime.now(offset)).replace(tzinfo=None)
     
     date = round(date.total_seconds())
 
@@ -41,4 +41,3 @@ async def ping(ctx, message):
     await ctx.send("Твое задание:" + " ".join(message[:-2]) + " Время: " + "".join(message[-2]) + ":" + "".join(message[-1]) )
                 
 bot.run(TOKEN)
-
