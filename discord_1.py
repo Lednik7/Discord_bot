@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from datetime import datetime
+import datetime
 import asyncio
 
 TOKEN = 'NzEzODQ1OTc3NTg0MjM4NjMz.XspWpA.CaoQUKKTyayXY41fPvX5AX7wKm' + '4'
@@ -28,11 +28,11 @@ async def ping(ctx, message):
     
     offset = datetime.timezone(datetime.timedelta(hours=3))
     
-    date = datetime(str[2], str[1], str[0], hour, minute) - datetime.now(offset)
+    date = datetime.datetime(str[2], str[1], str[0], hour, minute) - datetime.datetime.now(offset)
     
     date = round(date.total_seconds())
 
-    print( datetime.now(offset))
+    print( datetime.datetime.now(offset))
 
     print(date)
     
