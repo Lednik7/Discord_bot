@@ -26,15 +26,17 @@ async def ping(ctx, message):
     
     message = message[3:]
     
-    date = datetime(str[2], str[1], str[0], hour, minute) - datetime.now()
+    offset = datetime.timezone(datetime.timedelta(hours=3))
+    
+    date = datetime(str[2], str[1], str[0], hour, minute) - datetime.now(offset)
     
     date = round(date.total_seconds())
 
-    print( datetime.now())
+    print( datetime.now(offset))
 
     print(date)
     
-    await asyncio.sleep(date+3*3600)
+    await asyncio.sleep(date)
     
     await ctx.send("Твое задание:" + " ".join(message[:-2]) + " Время: " + "".join(message[-2]) + ":" + "".join(message[-1]) )
                 
