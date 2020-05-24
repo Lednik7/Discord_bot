@@ -55,15 +55,21 @@ async def on_message(message):
 
     elif message.content.startswith('!del'):
         
-        ctx = message.channel
+        try:
+        
+            ctx = message.channel
 
-        message = (message.content)[5:]
+            message = (message.content)[5:]
 
-        number = message.replace(" ", "")
+            number = message.replace(" ", "")
 
-        del tasks[int(number)]
+            del tasks[int(number)]
 
-        await ctx.send("Удален элемент " + number)
+            await ctx.send("Удален элемент " + number)
+
+        except:
+
+            await ctx.send("Возможно, элемента в списке нет")
 
     elif message.content.startswith('!ping'):
 
