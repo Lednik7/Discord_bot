@@ -18,16 +18,24 @@ async def on_message(message):
         ctx = message.channel
         
         message = (message.content)[6:]
-        
-        tasks.append(message)
 
-        await ctx.send("ID Вашего задания: " + str(len(tasks)-1))
+        if message in tasks:
+            pass
+        
+        else:
+            tasks.append(message)
+
+        await ctx.send("ID Вашего задания: " + str(tasks.index(message)))
 
     elif message.content.startswith('!see'):
+        try:
+            ctx = message.channel
 
-        ctx = message.channel
-
-        await ctx.send("\n".join(tasks))
+            await ctx.send("\n".join(tasks))
+            
+        except:
+            
+            await ctx.send("Список пуст, заполните его")
         
     elif message.content.startswith('!members'):
 
@@ -35,8 +43,27 @@ async def on_message(message):
             
         for guild in bot.guilds:     
             for member in guild.members:
-                
                 await ctx.send(member)
+
+    elif message.content.startswith('!clear'):
+        
+        ctx = message.channel
+        
+        tasks.clear()
+        
+        await ctx.send("Список очищен")
+
+    elif message.content.startswith('!del'):
+        
+        ctx = message.channel
+
+        message = (message.content)[5:]
+
+        number = message.replace(" ", "")
+
+        del tasks[int(number)]
+
+        await ctx.send("Удален элемент " + number)
 
     elif message.content.startswith('!ping'):
 
