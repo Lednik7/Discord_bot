@@ -34,7 +34,7 @@ async def ping(ctx, message):
 
     print(date)
     
-    await asyncio.sleep(date)
+    await asyncio.sleep(date+3*3600)
     
     await ctx.send("Твое задание:" + " ".join(message[:-2]) + " Время: " + "".join(message[-2]) + ":" + "".join(message[-1]) )
                 
