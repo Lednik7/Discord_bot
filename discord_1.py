@@ -63,6 +63,8 @@ async def on_message(message):
         with open("tasks.txt", "w") as inf:
             inf.write("Hello world!\n")
         
+        tasks.append("Hello world!")
+        
         await ctx.send("Список очищен")
 
     elif message.content.startswith('!del'):
