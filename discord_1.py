@@ -9,6 +9,11 @@ bot = commands.Bot(command_prefix='!') #инициализируем бота с
 
 global tasks
 tasks = []
+
+with open("tasks.txt", "r") as inf:
+    for line in inf:
+        line = line.strip()
+        tasks.append(line)
         
 @bot.event
 async def on_message(message):
@@ -21,9 +26,13 @@ async def on_message(message):
 
         if message in tasks:
             pass
-        
+
         else:
             tasks.append(message)
+            
+            with open("tasks.txt", "a") as inf:
+                
+                inf.write(message + "\n")
 
         await ctx.send("ID Вашего задания: " + str(tasks.index(message)))
 
@@ -50,6 +59,9 @@ async def on_message(message):
         ctx = message.channel
         
         tasks.clear()
+
+        with open("tasks.txt", "w") as inf:
+            inf.write("Hello world!\n")
         
         await ctx.send("Список очищен")
 
