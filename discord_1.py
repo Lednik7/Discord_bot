@@ -14,7 +14,7 @@ with open("tasks.txt", "r") as inf:
     for line in inf:
         line = line.strip()
         tasks.append(line)
-        
+
 @bot.event
 async def on_message(message):
     
@@ -46,7 +46,7 @@ async def on_message(message):
             
             await ctx.send("Список пуст, заполните его")
         
-    elif message.content.startswith('!members'):
+    elif message.content.startswith('!members_'):
 
         ctx = message.channel
             
@@ -82,6 +82,19 @@ async def on_message(message):
         except:
 
             await ctx.send("Возможно, элемента в списке нет")
+
+    elif message.content.startswith('!reload'):
+
+        tasks.clear()
+
+        ctx = message.channel
+        
+        with open("tasks.txt", "r") as inf:
+            for line in inf:
+                line = line.strip()
+                tasks.append(line)
+
+        await ctx.send("Задания были перезапущены")
 
     elif message.content.startswith('!ping'):
 
